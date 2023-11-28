@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NovinBar.Domain.OperationResults;
+using NovinBar.Domain.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +18,8 @@ namespace NovinBar.Domain.Users
 
         public User(string firstName, string lastName, string userName, string passWord, string phoneNumber)
         {
-            if (CheckUserInInsert(firstName, lastName, userName, passWord, phoneNumber))
+            var result = CheckUser.CheckUserInInsert(firstName, lastName, userName, passWord, phoneNumber);
+            if (result.Success)
             {
                 FirstName = firstName;
                 LastName = lastName;
@@ -26,12 +29,13 @@ namespace NovinBar.Domain.Users
             }
             else
             {
-                throw new Exception("The data is not valid");
+                throw new Exception(result.Message);
             }
         }
         public void UpdateUser(string firstName, string lastName, string passWord, string phoneNumber)
         {
-            if (CheckUserInUpdate(firstName, lastName, passWord, phoneNumber))
+            var result = CheckUser.CheckUserInUpdate(firstName, lastName, passWord, phoneNumber);
+            if (result.Success)
             {
                 FirstName = firstName;
                 LastName = lastName;
@@ -40,41 +44,11 @@ namespace NovinBar.Domain.Users
             }
             else
             {
-                throw new Exception("The data is not valid");
+                throw new Exception(result.Message);
             }
         }
-        private static bool CheckUserInInsert(string firstName, string lastName, string userName, string passWord, string phoneNumber)
-        {
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(passWord))
-            {
-                return false;
-            }
-            else if (Validations.Validation.CheckPhoneNumberFormat(phoneNumber))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private static bool CheckUserInUpdate(string firstName, string userName, string passWord, string phoneNumber)
-        {
-            if (string.IsNullOrWhiteSpace(firstName) ||
-                string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(passWord))
-            {
-                return false;
-            }
-            else if (Validations.Validation.CheckPhoneNumberFormat(phoneNumber))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        
+         
 
     }
 }

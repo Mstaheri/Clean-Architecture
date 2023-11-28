@@ -24,5 +24,19 @@ namespace NovinBar.Domain.Validations
             bool result = long.TryParse(Str, out long a);
             return result;
         }
+        public static bool CheckFormatEnglishAndNumbers(string input)
+        {
+            foreach (char c in input)
+            {
+                if (!IsEnglishLetter(c))
+                    return true;
+            }
+            return false;
+        }
+
+        private static bool IsEnglishLetter(char c)
+        {
+            return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+        }
     }
 }

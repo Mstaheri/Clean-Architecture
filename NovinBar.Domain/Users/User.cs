@@ -18,37 +18,36 @@ namespace NovinBar.Domain.Users
 
         public User(string firstName, string lastName, string userName, string passWord, string phoneNumber)
         {
-            var result = CheckUser.CheckUserInInsert(firstName, lastName, userName, passWord, phoneNumber);
-            if (result.Success)
-            {
-                FirstName = firstName;
-                LastName = lastName;
-                UserName = userName;
-                PassWord = passWord;
-                PhoneNumber = phoneNumber;
-            }
-            else
-            {
-                throw new Exception(result.Message);
-            }
+            CheckUser.CheckUserFirstName(firstName);
+            CheckUser.CheckUserLastName(lastName);
+            CheckUser.CheckUserUserName(userName);
+            CheckUser.CheckUserPassword(passWord);
+            CheckUser.CheckPhoneNumber(phoneNumber);
+            FirstName = firstName;
+            LastName = lastName;
+            UserName = userName;
+            PassWord = passWord;
+            PhoneNumber = phoneNumber;
         }
-        public void UpdateUser(string firstName, string lastName, string passWord, string phoneNumber)
+        public void UpdateUserFirstName(string firstName)
         {
-            var result = CheckUser.CheckUserInUpdate(firstName, lastName, passWord, phoneNumber);
-            if (result.Success)
-            {
-                FirstName = firstName;
-                LastName = lastName;
-                PassWord = passWord;
-                PhoneNumber = phoneNumber;
-            }
-            else
-            {
-                throw new Exception(result.Message);
-            }
+            CheckUser.CheckUserFirstName(firstName);
+            FirstName = firstName;
         }
-        
-         
-
+        public void UpdateUserLastName(string lastName)
+        {
+            CheckUser.CheckUserLastName(lastName);
+            LastName = lastName;
+        } 
+        public void UpdateUserPassWord(string passWord)
+        {
+            CheckUser.CheckUserPassword(passWord);
+            PassWord = passWord;
+        }
+        public void UpdateUserPhoneNumber(string phoneNumber)
+        {
+            CheckUser.CheckPhoneNumber(phoneNumber);
+            PhoneNumber = phoneNumber;
+        }
     }
 }

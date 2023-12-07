@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NovinBar.Domain\NovinBar.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

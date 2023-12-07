@@ -1,26 +1,9 @@
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using NovinBar.WebSite;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//builder.Services.AddHealthChecks().
-//    AddCheck<SqlHealthCheck>("sql");
 
 var app = builder.Build();
-//app.MapHealthChecks("health", new HealthCheckOptions
-//{
-//    Predicate = reg => reg.Name == "sql",
-//    ResponseWriter = (context , report) =>
-//    {
-//        context.Response.StatusCode.ToString();
-//        report.Status.ToString();
-//        return Task.CompletedTask;
-//    }
-
-//});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

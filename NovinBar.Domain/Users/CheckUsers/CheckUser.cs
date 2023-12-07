@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace NovinBar.Domain.Validations
 {
-    public class CheckUser : ICheckUser
+    public class CheckUser
     {
         public CheckUser()
         {
 
         }
 
-        public OperationResult CheckUserFirstName(string firstName)
+        public static OperationResult CheckUserFirstName(string firstName)
         {
             if (string.IsNullOrEmpty(firstName))
             {
@@ -33,7 +33,7 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public OperationResult CheckUserLastName(string lastName)
+        public static OperationResult CheckUserLastName(string lastName)
         {
             if (string.IsNullOrEmpty(lastName))
             {
@@ -51,7 +51,7 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public OperationResult CheckUserUserName(string userName)
+        public static OperationResult CheckUserUserName(string userName)
         {
             if (string.IsNullOrEmpty(userName))
             {
@@ -69,7 +69,7 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public OperationResult CheckUserPassword(string passWord)
+        public static OperationResult CheckUserPassword(string passWord)
         {
             if (string.IsNullOrEmpty(passWord))
             {
@@ -87,7 +87,7 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public OperationResult CheckPhoneNumber(string phoneNumber)
+        public static OperationResult CheckPhoneNumber(string phoneNumber)
         {
             if (string.IsNullOrEmpty(phoneNumber))
             {

@@ -2,6 +2,7 @@
 using NovinBar.Domain.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,14 @@ namespace NovinBar.Domain.Users
 {
     public class User
     {
+        [MaxLength(50)]
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
+        [Key]
         public string UserName { get; private set; }
         public string PassWord { get; private set; }
         public string PhoneNumber { get; private set; }
+        public bool IsDelete { get; private set; }
 
         public User(string firstName, string lastName, string userName, string passWord, string phoneNumber)
         {
@@ -28,26 +32,23 @@ namespace NovinBar.Domain.Users
             UserName = userName;
             PassWord = passWord;
             PhoneNumber = phoneNumber;
+            IsDelete = false;
         }
-        public void UpdateUserFirstName(string firstName)
+        public void UpdateUser(string firstName , string lastName , string passWord
+           , string phoneNumber)
         {
             CheckUser.CheckUserFirstName(firstName);
-            FirstName = firstName;
-        }
-        public void UpdateUserLastName(string lastName)
-        {
             CheckUser.CheckUserLastName(lastName);
-            LastName = lastName;
-        } 
-        public void UpdateUserPassWord(string passWord)
-        {
             CheckUser.CheckUserPassword(passWord);
-            PassWord = passWord;
-        }
-        public void UpdateUserPhoneNumber(string phoneNumber)
-        {
             CheckUser.CheckPhoneNumber(phoneNumber);
+            FirstName = firstName;
+            LastName = lastName;
+            PassWord = passWord;
             PhoneNumber = phoneNumber;
+        }
+        public void Delete()
+        {
+            IsDelete= true;
         }
     }
 }

@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NovinBar.Application\NovinBar.Application.csproj" />
+    <ProjectReference Include="..\NovinBar.Domain\NovinBar.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

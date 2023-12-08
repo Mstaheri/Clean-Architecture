@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\NovinBar.Application\NovinBar.Application.csproj" />
     <ProjectReference Include="..\NovinBar.Domain\NovinBar.Domain.csproj" />
+    <ProjectReference Include="..\NovinBar.Persistence\NovinBar.Persistence.csproj" />
+    <ProjectReference Include="..\NovinBarAsp.NetCor\NovinBar.WebSite\NovinBar.WebSite.csproj" />
   </ItemGroup>
 
 </Project>

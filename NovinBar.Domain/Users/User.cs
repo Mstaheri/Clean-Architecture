@@ -50,5 +50,10 @@ namespace NovinBar.Domain.Users
         {
             IsDelete= true;
         }
+        public void Recovery()
+        {
+            IsDelete = false;
+        }
+
     }
 }

@@ -9,10 +9,10 @@ namespace NovinBar.Domain.Users.IUserRepositorys
 {
     public interface IUser
     {
-        public OperationResult Insert(User user);
-        public OperationResult Update(User user);
-        public OperationResult Delete(string userName);
-        public OperationResult Recovery(string userName);
+        public Task<OperationResult> InsertAsync(User user);
+        public Task<OperationResult> UpdateAsync(User user);
+        public Task<OperationResult> DeleteAsync(string userName);
+        public Task<OperationResult> RecoveryAsync(string userName);
         public OperationResult<List<User>> Select(string searchUserName = "");
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NovinBar.Infrastructure.Users.Files
 {
-    internal class UserEntityFramwork : IUser
+    public class UserEntityFramwork : IUser
     {
         public string _ConnectionString { get; set; }
         public UserEntityFramwork(string connectionString)
@@ -67,24 +67,53 @@ namespace NovinBar.Infrastructure.Users.Files
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User.Where(p => p.UserName == user.UserName).FirstOrDefault();
+                var query = db.User.Where(p => p.UserName == user.UserName).Single();
                 query.UpdateUser(user.FirstName, user.LastName, user.PassWord, user.PhoneNumber);
                 db.SaveChanges();
+                return new OperationResult 
+                { Success = true };
             }
             catch (Exception)
             {
-
+                return new OperationResult
+                { Success = false };
             }
         }
 
         public OperationResult Delete(string userName)
         {
-            
+            try
+            {
+                DbContextEF db = new DbContextEF(_ConnectionString);
+                var query = db.User.Where(p => p.UserName == userName).Single();
+                query.Delete();
+                db.SaveChanges();
+                return new OperationResult
+                { Success = true };
+            }
+            catch (Exception)
+            {
+                return new OperationResult
+                { Success = false };
+            }
         }
 
         public OperationResult Recovery(string userName)
         {
-            
+            try
+            {
+                DbContextEF db = new DbContextEF(_ConnectionString);
+                var query = db.User.Where(p => p.UserName == userName).Single();
+                query.Recovery();
+                db.SaveChanges();
+                return new OperationResult
+                { Success = true };
+            }
+            catch (Exception)
+            {
+                return new OperationResult
+                { Success = false };
+            }
         }
     }
 }

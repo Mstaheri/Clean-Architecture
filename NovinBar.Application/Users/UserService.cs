@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace NovinBar.Application.Users
 {
-    public class User
+    public class UserService
     {
         private readonly IUser _user;
-        public User(IUser user)
+        public UserService(IUser user)
         {
             _user = user;
         }
@@ -20,22 +20,107 @@ namespace NovinBar.Application.Users
         {
             return Task.Run(() =>
             {
-                var p = _user.Insert(user);
+                var result = _user.Insert(user);
+                if (result.Success == true)
+                {
+                    return new OperationResult
+                    {
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "خطا رخ داده"
+                    };
+                }
             });
-            
         }
         public Task<OperationResult> UserUpdate(User user)
         {
             return Task.Run(() =>
             {
-                var p = _user.Update(user);
+                var result = _user.Update(user);
+                if (result.Success == true)
+                {
+                    return new OperationResult
+                    {
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "خطا رخ داده"
+                    };
+                }
             });
         }
-        public Task<OperationResult> UserSelect(string UserName = "")
+        public Task<OperationResult<List<User>>> UserSelect(string UserName = "")
         {
             return Task.Run(() =>
             {
-                var p = _user.Select();
+                var result = _user.Select(UserName);
+                if (result.Success == true)
+                {
+                    return result;
+                }
+                else
+                {
+                    return new OperationResult<List<User>>
+                    {
+                        Success = false,
+                        Message = "خطا رخ داده"
+                    };
+                }
+            });
+        }
+        public Task<OperationResult> UserDelete(string UserName)
+        {
+            return Task.Run(() =>
+            {
+                var result = _user.Delete(UserName);
+                if (result.Success == true)
+                {
+                    return new OperationResult
+                    {
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "خطا رخ داده"
+                    };
+                }
+            });
+        }
+        public Task<OperationResult> UserRecovery(string UserName)
+        {
+            return Task.Run(() =>
+            {
+                var result = _user.Recovery(UserName);
+                if (result.Success == true)
+                {
+                    return new OperationResult
+                    {
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "خطا رخ داده"
+                    };
+                }
             });
         }
     }

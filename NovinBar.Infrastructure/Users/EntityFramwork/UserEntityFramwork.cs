@@ -17,13 +17,13 @@ namespace NovinBar.Infrastructure.Users.Files
         {
             _ConnectionString = connectionString;
         }
-        public OperationResult Insert(User user)
+        public async Task<OperationResult> InsertAsync(User user)
         {
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
                 db.User.Add(user);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return new OperationResult
                 {
                     Success = true
@@ -62,14 +62,14 @@ namespace NovinBar.Infrastructure.Users.Files
             
         }
 
-        public OperationResult Update(User user)
+        public async Task<OperationResult> UpdateAsync(User user)
         {
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
                 var query = db.User.Where(p => p.UserName == user.UserName).Single();
                 query.UpdateUser(user.FirstName, user.LastName, user.PassWord, user.PhoneNumber);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return new OperationResult 
                 { Success = true };
             }
@@ -80,14 +80,14 @@ namespace NovinBar.Infrastructure.Users.Files
             }
         }
 
-        public OperationResult Delete(string userName)
+        public async Task<OperationResult> DeleteAsync(string userName)
         {
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
                 var query = db.User.Where(p => p.UserName == userName).Single();
                 query.Delete();
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return new OperationResult
                 { Success = true };
             }
@@ -98,14 +98,14 @@ namespace NovinBar.Infrastructure.Users.Files
             }
         }
 
-        public OperationResult Recovery(string userName)
+        public async Task<OperationResult> RecoveryAsync(string userName)
         {
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
                 var query = db.User.Where(p => p.UserName == userName).Single();
                 query.Recovery();
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return new OperationResult
                 { Success = true };
             }

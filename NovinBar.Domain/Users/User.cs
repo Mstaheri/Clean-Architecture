@@ -22,11 +22,11 @@ namespace NovinBar.Domain.Users
 
         public User(string firstName, string lastName, string userName, string passWord, string phoneNumber)
         {
-            CheckUser.CheckUserFirstName(firstName);
-            CheckUser.CheckUserLastName(lastName);
-            CheckUser.CheckUserUserName(userName);
-            CheckUser.CheckUserPassword(passWord);
-            CheckUser.CheckPhoneNumber(phoneNumber);
+            CheckUser.FirstName(firstName);
+            CheckUser.LastName(lastName);
+            CheckUser.UserName(userName);
+            CheckUser.Password(passWord);
+            CheckUser.PhoneNumber(phoneNumber);
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
@@ -37,10 +37,10 @@ namespace NovinBar.Domain.Users
         public void UpdateUser(string firstName , string lastName , string passWord
            , string phoneNumber)
         {
-            CheckUser.CheckUserFirstName(firstName);
-            CheckUser.CheckUserLastName(lastName);
-            CheckUser.CheckUserPassword(passWord);
-            CheckUser.CheckPhoneNumber(phoneNumber);
+            CheckUser.FirstName(firstName);
+            CheckUser.LastName(lastName);
+            CheckUser.Password(passWord);
+            CheckUser.PhoneNumber(phoneNumber);
             FirstName = firstName;
             LastName = lastName;
             PassWord = passWord;

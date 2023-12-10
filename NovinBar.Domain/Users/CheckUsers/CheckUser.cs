@@ -15,9 +15,9 @@ namespace NovinBar.Domain.Validations
 
         }
 
-        public static OperationResult CheckUserFirstName(string firstName)
+        public static OperationResult FirstName(string firstName)
         {
-            if (string.IsNullOrEmpty(firstName))
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 return new OperationResult
                 {
@@ -33,9 +33,9 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public static OperationResult CheckUserLastName(string lastName)
+        public static OperationResult LastName(string lastName)
         {
-            if (string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 return new OperationResult
                 {
@@ -51,9 +51,9 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public static OperationResult CheckUserUserName(string userName)
+        public static OperationResult UserName(string userName)
         {
-            if (string.IsNullOrEmpty(userName))
+            if (string.IsNullOrWhiteSpace(userName))
             {
                 return new OperationResult
                 {
@@ -69,9 +69,9 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public static OperationResult CheckUserPassword(string passWord)
+        public static OperationResult Password(string passWord)
         {
-            if (string.IsNullOrEmpty(passWord))
+            if (string.IsNullOrWhiteSpace(passWord))
             {
                 return new OperationResult
                 {
@@ -87,9 +87,9 @@ namespace NovinBar.Domain.Validations
                 };
             }
         }
-        public static OperationResult CheckPhoneNumber(string phoneNumber)
+        public static OperationResult PhoneNumber(string phoneNumber)
         {
-            if (string.IsNullOrEmpty(phoneNumber))
+            if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 return new OperationResult
                 {

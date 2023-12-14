@@ -1,12 +1,13 @@
 ﻿using NovinBar.Domain.OperationResults;
 using NovinBar.Domain.Users;
+using NovinBar.Domain.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain.Validations
+namespace NovinBar.Domain.Entities.Users
 {
     public class CheckUser
     {
@@ -114,5 +115,5 @@ namespace NovinBar.Domain.Validations
             }
         }
     }
-    
+
 }

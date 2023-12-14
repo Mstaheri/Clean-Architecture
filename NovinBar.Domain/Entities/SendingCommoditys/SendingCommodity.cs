@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NovinBar.Domain.SendingCommoditys
 {
-    internal class SendingCommodity
+    public class SendingCommodity
     {
+        public int MyProperty { get; private set; }
     }
 }

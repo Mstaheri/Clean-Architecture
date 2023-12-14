@@ -1,11 +1,12 @@
 ﻿using NovinBar.Domain.OperationResults;
+using NovinBar.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain.Users.IUserRepositorys
+namespace NovinBar.Domain.Entities.Users
 {
     public interface IUser
     {

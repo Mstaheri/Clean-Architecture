@@ -1,6 +1,6 @@
-﻿using NovinBar.Domain.OperationResults;
+﻿using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.OperationResults;
 using NovinBar.Domain.Users;
-using NovinBar.Domain.Users.IUserRepositorys;
 using NovinBar.Persistence;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Infrastructure.Users.Files
+namespace NovinBar.Infrastructure.EntityFramwork
 {
     public class UserEntityFramwork : IUser
     {
@@ -36,7 +36,7 @@ namespace NovinBar.Infrastructure.Users.Files
                     Success = false
                 };
             }
-            
+
         }
 
         public OperationResult<List<User>> Select(string SearchUserName = "")
@@ -59,7 +59,7 @@ namespace NovinBar.Infrastructure.Users.Files
                     Success = false
                 };
             }
-            
+
         }
 
         public async Task<OperationResult> UpdateAsync(User user)
@@ -70,7 +70,7 @@ namespace NovinBar.Infrastructure.Users.Files
                 var query = db.User.Where(p => p.UserName == user.UserName).Single();
                 query.UpdateUser(user.FirstName, user.LastName, user.PassWord, user.PhoneNumber);
                 await db.SaveChangesAsync();
-                return new OperationResult 
+                return new OperationResult
                 { Success = true };
             }
             catch (Exception)
@@ -114,6 +114,28 @@ namespace NovinBar.Infrastructure.Users.Files
                 return new OperationResult
                 { Success = false };
             }
+        }
+
+        public OperationResult<User> FindUserName(string UserName)
+        {
+            try
+            {
+                DbContextEF db = new DbContextEF(_ConnectionString);
+                var query = db.User.Where(p => p.UserName == UserName).SingleOrDefault();
+                return new OperationResult<User>
+                {
+                    Data = query,
+                    Success = true
+                };
+            }
+            catch (Exception)
+            {
+                return new OperationResult<User>
+                {
+                    Success = false
+                };
+            }
+
         }
     }
 }

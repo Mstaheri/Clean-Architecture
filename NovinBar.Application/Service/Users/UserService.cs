@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Application.Users
+namespace NovinBar.Application.Service.Users
 {
     public class UserService
     {
@@ -18,13 +18,44 @@ namespace NovinBar.Application.Users
         }
         public async Task<OperationResult> UserInsertAsync(User user)
         {
-            var result = await _user.InsertAsync(user);
-            if (result.Success == true)
+            var result2 = _user.FindUserName(user.UserName);
+            if (result2.Success == true)
             {
-                return new OperationResult
+                if (result2.Data == null)
                 {
-                    Success = true
-                };
+                    var result = await _user.InsertAsync(user);
+                    if (result.Success == true)
+                    {
+                        return new OperationResult
+                        {
+                            Success = true
+                        };
+                    }
+                    else
+                    {
+                        return new OperationResult
+                        {
+                            Success = false,
+                            Message = "خطا رخ داده"
+                        };
+                    }
+                }
+                else if (result2.Data.IsDelete == true)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "این نام کاربری قبلا حذف شده میخواهید بازگردانده شود ؟"
+                    };
+                }
+                else
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "این نام کاربری قبلا وارد شده"
+                    };
+                }
             }
             else
             {
@@ -34,6 +65,8 @@ namespace NovinBar.Application.Users
                     Message = "خطا رخ داده"
                 };
             }
+
+
         }
         public async Task<OperationResult> UserUpdateAsync(User user)
         {

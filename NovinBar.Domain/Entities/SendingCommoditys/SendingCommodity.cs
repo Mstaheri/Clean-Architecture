@@ -8,6 +8,6 @@ namespace NovinBar.Domain.SendingCommoditys
 {
     public class SendingCommodity
     {
-        public int MyProperty { get; private set; }
+        public int Code { get; private set; }
     }
 }

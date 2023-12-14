@@ -1,6 +1,6 @@
-﻿using NovinBar.Domain.OperationResults;
+﻿using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.OperationResults;
 using NovinBar.Domain.Users;
-using NovinBar.Domain.Users.IUserRepositorys;
 using System;
 using System.Collections.Generic;
 using System.Linq;

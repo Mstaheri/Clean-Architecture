@@ -11,11 +11,6 @@ namespace NovinBar.Domain.Entities.Users
 {
     public class CheckUser
     {
-        public CheckUser()
-        {
-
-        }
-
         public static OperationResult FirstName(string firstName)
         {
             if (string.IsNullOrWhiteSpace(firstName))

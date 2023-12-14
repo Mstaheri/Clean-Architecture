@@ -1,4 +1,5 @@
-﻿using NovinBar.Domain.OperationResults;
+﻿using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.OperationResults;
 using NovinBar.Domain.Validations;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,4 @@
-﻿using NovinBar.Domain.OperationResults;
-using NovinBar.Domain.Users;
-using NovinBar.Domain.Validations;
+﻿using NovinBar.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +16,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "نام را وارد کنید"
+                    Message = ConstMessages.IsNullFirstName
                 };
             }
             else
@@ -36,7 +34,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "نام خانوادگی را وارد کنید"
+                    Message = ConstMessages.IsNullLastName
                 };
             }
             else
@@ -54,7 +52,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "نام کاربری را وارد کنید"
+                    Message = ConstMessages.IsNullUserName
                 };
             }
             else
@@ -72,7 +70,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "رمز عبور را وارد کنید"
+                    Message = ConstMessages.IsNullPassWord
                 };
             }
             else
@@ -90,7 +88,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "شماره تلفن را وارد کنید"
+                    Message = ConstMessages.IsNullPhoneNumber
                 };
             }
             else if (Validation.CheckPhoneNumberFormat(phoneNumber))
@@ -98,7 +96,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "شماره موبایل را درست وارد کنید"
+                    Message = ConstMessages.PhoneNumberFormat
                 };
             }
             else

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using NovinBar.Domain.Entities.SendingShipments.ValueObject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace NovinBar.Domain.SendingShipments
         [Key]
         public int Barname { get; private set; }
         // Sender //
-        public int? SenderCode { get; private set; }
+        public SenderCode? SenderCode { get; private set; }
         public string SenderFirstName { get; private set; }
         public string SenderLastName { get; private set; }
         public string SenderPhoneNumber { get; private set; }
@@ -45,7 +47,7 @@ namespace NovinBar.Domain.SendingShipments
         public decimal? Storage { get; private set; }
         public decimal? packing { get; private set; }
         public decimal? InterCity { get; private set; }
-        public SendingShipment()
+        public SendingShipment(SenderCode? senderCode)
         {
 
         }

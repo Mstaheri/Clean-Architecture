@@ -18,6 +18,7 @@ namespace NovinBar.Domain.helper
         public const string IsNullOriginWarehouse = "شما انبار مبدا را وارد نکردید";
         public const string IsNullDestinationCity = "شما شهر مقصد را وارد نکردید";
         public const string IsNullDestinationWarehouse = "شما انبار مقصد را وارد نکردید";
+        public const string IsNullCodeSender = "شما کد فرستنده را وارد نکردید";
 
         //Format
         public const string PhoneNumberFormat = "شماره موبایل را درست وارد کنید";

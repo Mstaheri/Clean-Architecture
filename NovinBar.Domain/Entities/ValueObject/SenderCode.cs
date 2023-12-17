@@ -10,27 +10,39 @@ namespace NovinBar.Domain.Entities.ValueObject
     public class SenderCode
     {
         public int Value { get; private set; }
-        public SenderCode(int value)
+        public SenderCode(string value)
         {
             var result = CheckSenderCode(value);
             if (result.Success == true)
             {
-                Value = value;
+                Value = int.Parse(value);
             }
             else
             {
                 throw new Exception(result.Message);
             }
         }
-        private OperationResult CheckSenderCode(int value)
+        private OperationResult CheckSenderCode(string value)
         {
-            return new OperationResult
+            if (Validation.CheckNumberFormat(value))
             {
-                Success = true
-            };
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = ConstMessages.IsNullCodeSender
+                };
+            }
+            else
+            {
+                return new OperationResult
+                {
+                    Success = true
+                };
+            }
+            
         }
 
-        public static implicit operator SenderCode(int value)
+        public static implicit operator SenderCode(string value)
             =>  new SenderCode(value);
 
         public static implicit operator int(SenderCode senderCode)

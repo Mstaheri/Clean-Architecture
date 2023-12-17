@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NovinBar.Domain.helper;
 
 namespace NovinBar.Domain.Entities.ValueObject
 {
@@ -30,10 +31,10 @@ namespace NovinBar.Domain.Entities.ValueObject
         }
 
         public static implicit operator SenderCode(int value)
-            => new SenderCode(value);
+            =>  new SenderCode(value);
 
         public static implicit operator int(SenderCode senderCode)
             => senderCode.Value;
-
+        
     }
 }

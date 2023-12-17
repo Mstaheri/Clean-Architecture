@@ -14,6 +14,10 @@ namespace NovinBar.Domain.helper
         public const string IsNullUserName = "شما نام کاربری را وارد نکردید";
         public const string IsNullPassWord = "شما رمز عبور را وارد نکردید";
         public const string IsNullPhoneNumber = "شما شماره همراه را وارد نکردید";
+        public const string IsNullOriginCity = "شما شهر مبدا را وارد نکردید";
+        public const string IsNullOriginWarehouse = "شما انبار مبدا را وارد نکردید";
+        public const string IsNullDestinationCity = "شما شهر مقصد را وارد نکردید";
+        public const string IsNullDestinationWarehouse = "شما انبار مقصد را وارد نکردید";
 
         //Format
         public const string PhoneNumberFormat = "شماره موبایل را درست وارد کنید";

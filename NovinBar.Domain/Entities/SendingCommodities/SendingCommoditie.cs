@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NovinBar.Domain.SendingCommoditys
 {
-    public class SendingCommodity
+    public class SendingCommoditie
     {
         public int Code { get; private set; }
     }

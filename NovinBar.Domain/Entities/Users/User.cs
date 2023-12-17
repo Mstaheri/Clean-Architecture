@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NovinBar.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain.Entities.Users
+namespace NovinBar.Domain.Users
 {
     public class User
     {
@@ -32,7 +33,7 @@ namespace NovinBar.Domain.Entities.Users
             PhoneNumber = phoneNumber;
             IsDelete = false;
         }
-        public void UpdateUser(string firstName, string lastName, string passWord
+        public void UpdateUser(string firstName , string lastName , string passWord
            , string phoneNumber)
         {
             CheckUser.FirstName(firstName);
@@ -46,7 +47,7 @@ namespace NovinBar.Domain.Entities.Users
         }
         public void Delete()
         {
-            IsDelete = true;
+            IsDelete= true;
         }
         public void Recovery()
         {

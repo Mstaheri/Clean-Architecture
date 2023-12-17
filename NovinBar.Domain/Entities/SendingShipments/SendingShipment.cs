@@ -1,5 +1,4 @@
-﻿
-using NovinBar.Domain.Entities.SendingShipments.ValueObject;
+﻿using NovinBar.Domain.Entities.ValueObject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,29 +15,29 @@ namespace NovinBar.Domain.SendingShipments
         public int Barname { get; private set; }
         // Sender //
         public SenderCode? SenderCode { get; private set; }
-        public SenderFirstName SenderFirstName { get; private set; }
-        public string SenderLastName { get; private set; }
-        public string SenderPhoneNumber { get; private set; }
+        public FirstName SenderFirstName { get; private set; }
+        public LastName SenderLastName { get; private set; }
+        public PhoneNumber SenderPhoneNumber { get; private set; }
         // Receiver //
-        public string ReceiverFirstName { get; private set; }
-        public string ReceiverLastName { get; private set; }
-        public string ReceiverPhoneNumber { get; private set; }
+        public FirstName ReceiverFirstName { get; private set; }
+        public LastName ReceiverLastName { get; private set; }
+        public PhoneNumber ReceiverPhoneNumber { get; private set; }
         // Origin //
-        public string OriginCity { get; private set; }
-        public string OriginWarehouse { get; private set; }
+        public OriginCity OriginCity { get; private set; }
+        public OriginWarehouse OriginWarehouse { get; private set; }
         // Destination //
-        public string DestinationCity1 { get; private set; }
-        public string DestinationWarehouse1 { get; private set; }
-        public string? DestinationCity2 { get; private set; }
-        public string? DestinationWarehouse2 { get; private set; }
+        public DestinationCity DestinationCity1 { get; private set; }
+        public DestinationWarehouse DestinationWarehouse1 { get; private set; }
+        public DestinationCity? DestinationCity2 { get; private set; }
+        public DestinationWarehouse? DestinationWarehouse2 { get; private set; }
         // Date and Time //
         public string Date { get; private set; }
         public string Time { get; private set; }
         // Driver //
         public int? DriverCode { get; private set; }
-        public string? DriverFirstName { get; private set; }
-        public string? DriverLastName { get; private set; }
-        public string? DriverPhoneNumber { get; private set; }
+        public FirstName? DriverFirstName { get; private set; }
+        public LastName? DriverLastName { get; private set; }
+        public PhoneNumber? DriverPhoneNumber { get; private set; }
         public decimal? DriverFee { get; private set; }
         // Payment //
         public decimal? PrePayment { get; private set; }
@@ -47,7 +46,8 @@ namespace NovinBar.Domain.SendingShipments
         public decimal? Storage { get; private set; }
         public decimal? packing { get; private set; }
         public decimal? InterCity { get; private set; }
-        public SendingShipment(SenderCode? senderCode , SenderFirstName senderFirstName)
+        public SendingShipment(SenderCode? senderCode , FirstName senderFirstName , LastName SenderLastName
+            , PhoneNumber senderPhoneNumber , FirstName receiverFirstName)
         {
 
         }

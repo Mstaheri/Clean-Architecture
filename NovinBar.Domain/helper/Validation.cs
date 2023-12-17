@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain
+namespace NovinBar.Domain.helper
 {
     public class Validation
     {
@@ -36,7 +36,7 @@ namespace NovinBar.Domain
 
         private static bool IsEnglishLetter(char c)
         {
-            return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+            return c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z' || c >= '0' && c <= '9';
         }
     }
 }

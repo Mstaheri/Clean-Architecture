@@ -36,7 +36,7 @@ namespace NovinBar.Application.Service.Users
                         return new OperationResult
                         {
                             Success = false,
-                            Message = "خطا رخ داده"
+                            Message = ConstMessages.ErorInDB
                         };
                     }
                 }
@@ -62,7 +62,7 @@ namespace NovinBar.Application.Service.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "خطا رخ داده"
+                    Message = ConstMessages.ErorInDB
                 };
             }
 
@@ -83,7 +83,7 @@ namespace NovinBar.Application.Service.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "خطا رخ داده"
+                    Message = ConstMessages.ErorInDB
                 };
             }
         }
@@ -99,7 +99,7 @@ namespace NovinBar.Application.Service.Users
                 return new OperationResult<List<User>>
                 {
                     Success = false,
-                    Message = "خطا رخ داده"
+                    Message = ConstMessages.ErorInDB
                 };
             }
         }
@@ -118,7 +118,7 @@ namespace NovinBar.Application.Service.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "خطا رخ داده"
+                    Message = ConstMessages.ErorInDB
                 };
             }
         }
@@ -137,7 +137,7 @@ namespace NovinBar.Application.Service.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = "خطا رخ داده"
+                    Message = ConstMessages.ErorInDB
                 };
             }
         }

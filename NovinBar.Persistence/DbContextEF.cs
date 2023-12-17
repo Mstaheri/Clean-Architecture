@@ -1,4 +1,5 @@
-﻿using NovinBar.Domain.SendingShipments;
+﻿using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.SendingShipments;
 using NovinBar.Domain.Users;
 using System;
 using System.Collections.Generic;

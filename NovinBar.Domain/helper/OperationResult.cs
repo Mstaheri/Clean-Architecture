@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain
+namespace NovinBar.Domain.helper
 {
     public class OperationResult
     {

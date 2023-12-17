@@ -1,4 +1,5 @@
-﻿using NovinBar.Domain.Users;
+﻿using NovinBar.Domain.helper;
+using NovinBar.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +92,7 @@ namespace NovinBar.Domain.Entities.Users
                     Message = ConstMessages.IsNullPhoneNumber
                 };
             }
-            else if (Validation.CheckPhoneNumberFormat(phoneNumber))
+            else if (!Validation.CheckPhoneNumberFormat(phoneNumber))
             {
                 return new OperationResult
                 {

@@ -1,5 +1,5 @@
-﻿using NovinBar.Domain;
-using NovinBar.Domain.Entities.Users;
+﻿using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.helper;
 using NovinBar.Domain.Users;
 using NovinBar.Persistence;
 using System;

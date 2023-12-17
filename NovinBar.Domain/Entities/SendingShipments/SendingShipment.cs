@@ -16,7 +16,7 @@ namespace NovinBar.Domain.SendingShipments
         public int Barname { get; private set; }
         // Sender //
         public SenderCode? SenderCode { get; private set; }
-        public string SenderFirstName { get; private set; }
+        public SenderFirstName SenderFirstName { get; private set; }
         public string SenderLastName { get; private set; }
         public string SenderPhoneNumber { get; private set; }
         // Receiver //
@@ -47,7 +47,7 @@ namespace NovinBar.Domain.SendingShipments
         public decimal? Storage { get; private set; }
         public decimal? packing { get; private set; }
         public decimal? InterCity { get; private set; }
-        public SendingShipment(SenderCode? senderCode)
+        public SendingShipment(SenderCode? senderCode , SenderFirstName senderFirstName)
         {
 
         }

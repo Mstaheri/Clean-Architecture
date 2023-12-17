@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NovinBar.Domain
+namespace NovinBar.Domain.helper
 {
     public class ConstMessages
     {
@@ -17,5 +17,8 @@ namespace NovinBar.Domain
 
         //Format
         public const string PhoneNumberFormat = "شماره موبایل را درست وارد کنید";
+
+        //Eror
+        public const string ErorInDB = "خطایی رخ داده است";
     }
 }

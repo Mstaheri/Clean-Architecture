@@ -25,8 +25,8 @@ namespace NovinBar.Persistence
             modelBuilder.Entity<SendingShipment>(option =>
             {
                 option.Property(per => per.Barname)
-                .HasMaxLength(50);
-
+                .HasMaxLength(50)
+                .IsRequired();
                 option.OwnsMany(per => per.SendingCommoditie, addOption=>
                 {
                     addOption.Property(addr => addr.firstname)

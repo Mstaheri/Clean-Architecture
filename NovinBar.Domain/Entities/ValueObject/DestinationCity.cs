@@ -9,42 +9,36 @@ namespace NovinBar.Domain.Entities.ValueObject
 {
     public class DestinationCity
     {
-        public string Value { get; private set; }
+        public string? Value { get; private set; }
         public DestinationCity(string value)
         {
-            var result = CheckDestinationCity(value);
-            if (result.Success == true)
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                Value = value;
+                var result = CheckDestinationCity(value);
+                if (result.Success == true)
+                {
+                    Value = value;
+                }
+                else
+                {
+                    throw new Exception(result.Message);
+                }
             }
             else
             {
-                throw new Exception(result.Message);
+                Value = null;
             }
+            
         }
         private OperationResult CheckDestinationCity(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return new OperationResult
-                {
-                    Success = false,
-                    Message = ConstMessages.IsNullDestinationCity
-                };
-            }
-            else
-            {
-                return new OperationResult
-                {
-                    Success = true
-                };
-            }
+            
         }
 
         public static implicit operator DestinationCity(string value)
             => new DestinationCity(value);
 
-        public static implicit operator string(DestinationCity destinationCity)
+        public static implicit operator string?(DestinationCity destinationCity)
             => destinationCity.Value;
     }
 }

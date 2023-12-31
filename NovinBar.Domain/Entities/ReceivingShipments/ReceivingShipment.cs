@@ -14,11 +14,11 @@ namespace NovinBar.Domain.Entities.ReceivingShipments
         public int Code { get; private set; }
         public int Barname { get; private set; }
         // Sender //
-        public FirstName SenderFirstName { get; private set; }
+        public Name SenderFirstName { get; private set; }
         public LastName SenderLastName { get; private set; }
         public PhoneNumber SenderPhoneNumber { get; private set; }
         // Receiver //
-        public FirstName ReceiverFirstName { get; private set; }
+        public Name ReceiverFirstName { get; private set; }
         public LastName ReceiverLastName { get; private set; }
         public PhoneNumber ReceiverPhoneNumber { get; private set; }
         // Origin //
@@ -30,7 +30,7 @@ namespace NovinBar.Domain.Entities.ReceivingShipments
         public string Time { get; private set; }
         // Driver //
         public int? DriverCode { get; private set; }
-        public FirstName? DriverFirstName { get; private set; }
+        public Name? DriverFirstName { get; private set; }
         public LastName? DriverLastName { get; private set; }
         public PhoneNumber? DriverPhoneNumber { get; private set; }
         // Payment //
@@ -43,8 +43,8 @@ namespace NovinBar.Domain.Entities.ReceivingShipments
         // Authentication
         public string? AuthenticationMethod { get; private set; }
         public string? AuthenticationText { get; private set; }
-        public ReceivingShipment(SenderCode? senderCode, FirstName senderFirstName, LastName SenderLastName
-            , PhoneNumber senderPhoneNumber, FirstName receiverFirstName)
+        public ReceivingShipment(Code? senderCode, Name senderFirstName, LastName SenderLastName
+            , PhoneNumber senderPhoneNumber, Name receiverFirstName)
         {
 
         }

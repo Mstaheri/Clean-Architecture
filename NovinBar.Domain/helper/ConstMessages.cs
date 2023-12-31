@@ -9,7 +9,7 @@ namespace NovinBar.Domain.helper
     public class ConstMessages
     {
         // IsNull
-        public const string IsNullFirstName = "شما نام را وارد نکردید";
+        public const string IsNullName = "شما نام را وارد نکردید";
         public const string IsNullLastName = "شما نام خانوادگی را وارد نکردید";
         public const string IsNullUserName = "شما نام کاربری را وارد نکردید";
         public const string IsNullPassWord = "شما رمز عبور را وارد نکردید";
@@ -18,12 +18,15 @@ namespace NovinBar.Domain.helper
         public const string IsNullOriginWarehouse = "شما انبار مبدا را وارد نکردید";
         public const string IsNullDestinationCity = "شما شهر مقصد را وارد نکردید";
         public const string IsNullDestinationWarehouse = "شما انبار مقصد را وارد نکردید";
-        public const string IsNullCodeSender = "شما کد فرستنده را وارد نکردید";
+        public const string IsNullCodeSender = "شما کد را وارد نکردید";
+        public const string Number = "شما عدد را وارد نکردید";
 
         //Format
         public const string PhoneNumberFormat = "شماره موبایل را درست وارد کنید";
 
         //Eror
         public const string ErorInDB = "خطایی رخ داده است";
+
+        public const string Payment = "شما فقط باید مقدار عددی وارد کنید";
     }
 }

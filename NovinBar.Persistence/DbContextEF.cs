@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client.Extensions.Msal;
 using NovinBar.Domain.Entities.Users;
+using NovinBar.Domain.Entities.ValueObject;
 using NovinBar.Domain.SendingCommoditys;
 using NovinBar.Domain.SendingShipments;
 using NovinBar.Domain.Users;
@@ -24,14 +26,89 @@ namespace NovinBar.Persistence
         {
             modelBuilder.Entity<SendingShipment>(option =>
             {
-                option.Property(per => per.Barname)
+                option.HasKey(per => per.Barname);
+
+                option.Property(per => per.SenderCode)
+                .HasMaxLength(10);
+
+                option.Property(per => per.SenderFirstName)
                 .HasMaxLength(50)
-                .IsRequired();
-                option.OwnsMany(per => per.SendingCommoditie, addOption=>
-                {
-                    addOption.Property(addr => addr.firstname)
-                    .HasMaxLength(50);
-                });
+                .IsUnicode(true);
+
+                option.Property(per => per.SenderLastName)
+                .HasMaxLength(50)
+                .IsUnicode(true);
+
+                option.Property(per => per.SenderPhoneNumber)
+                .HasMaxLength(11)
+                .IsUnicode(false);
+
+                option.Property(per => per.ReceiverFirstName)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.ReceiverLastName)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.ReceiverPhoneNumber)
+               .HasMaxLength(11)
+               .IsUnicode(false);
+
+                option.Property(per => per.OriginCity)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.OriginWarehouse)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DestinationCity1)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DestinationWarehouse1)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DestinationCity2)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DestinationWarehouse2)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.Date)
+               .HasMaxLength(10)
+               .IsUnicode(true);
+
+                option.Property(per => per.Time)
+               .HasMaxLength(5)
+               .IsUnicode(true);
+
+                option.Property(per => per.DriverCode)
+               .HasMaxLength(10);
+
+                option.Property(per => per.DriverFirstName)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DriverLastName)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+                option.Property(per => per.DriverPhoneNumber)
+               .HasMaxLength(50)
+               .IsUnicode(true);
+
+           
+
+
+
+
+
+                
             });
             base.OnModelCreating(modelBuilder);
         }

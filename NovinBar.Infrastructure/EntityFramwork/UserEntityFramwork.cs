@@ -23,7 +23,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                db.User.Add(user);
+                await db.User.AddAsync(user);
                 await db.SaveChangesAsync();
                 return new OperationResult
                 {

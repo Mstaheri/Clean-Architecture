@@ -9,42 +9,36 @@ namespace NovinBar.Domain.Entities.ValueObject
 {
     public class DestinationWarehouse
     {
-        public string Value { get; private set; }
+        public string? Value { get; private set; }
         public DestinationWarehouse(string value)
         {
-            var result = CheckOriginWarehouse(value);
-            if (result.Success == true)
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                Value = value;
+                var result = CheckOriginWarehouse(value);
+                if (result.Success == true)
+                {
+                    Value = value;
+                }
+                else
+                {
+                    throw new Exception(result.Message);
+                }
             }
             else
             {
-                throw new Exception(result.Message);
+                Value= null;
             }
+            
         }
         private OperationResult CheckOriginWarehouse(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return new OperationResult
-                {
-                    Success = false,
-                    Message = ConstMessages.IsNullDestinationWarehouse
-                };
-            }
-            else
-            {
-                return new OperationResult
-                {
-                    Success = true
-                };
-            }
+            
         }
 
         public static implicit operator DestinationWarehouse(string value)
             => new DestinationWarehouse(value);
 
-        public static implicit operator string(DestinationWarehouse destinationWarehouse)
+        public static implicit operator string?(DestinationWarehouse destinationWarehouse)
             => destinationWarehouse.Value;
     }
 }

@@ -39,19 +39,53 @@ namespace NovinBar.Domain.SendingShipments
         public FirstName? DriverFirstName { get; private set; }
         public LastName? DriverLastName { get; private set; }
         public PhoneNumber? DriverPhoneNumber { get; private set; }
-        public decimal? DriverFee { get; private set; }
+        public Payment? DriverFee { get; private set; }
         // Payment //
-        public decimal? PrePayment { get; private set; }
-        public decimal? AfterPayment { get; private set; }
-        public decimal? Insurance { get; private set; }
-        public decimal? Storage { get; private set; }
-        public decimal? packing { get; private set; }
-        public decimal? InterCity { get; private set; }
+        public Payment? PrePayment { get; private set; }
+        public Payment? AfterPayment { get; private set; }
+        public Payment? Insurance { get; private set; }
+        public Payment? Storage { get; private set; }
+        public Payment? Packing { get; private set; }
+        public Payment? InterCity { get; private set; }
         public List<SendingCommoditie> SendingCommoditie { get; private set; }
 
-        public SendingShipment(SenderCode? senderCode , FirstName senderFirstName , LastName SenderLastName
-            , PhoneNumber senderPhoneNumber , FirstName receiverFirstName)
+        public SendingShipment(
+            SenderCode? senderCode,
+            FirstName senderFirstName,
+            LastName senderLastName,
+            PhoneNumber senderPhoneNumber,
+            FirstName receiverFirstName,
+            LastName receiverLastName,
+            PhoneNumber receiverPhoneNumber,
+            OriginCity originCity,
+            OriginWarehouse originWarehouse,
+            DestinationCity destinationCity1,
+            DestinationWarehouse destinationWarehouse1,
+            DestinationCity destinationCity2,
+            DestinationWarehouse destinationWarehouse2,
+            string date,
+            string time,
+            int? driverCode,
+            FirstName? driverFirstName,
+            LastName? driverLastName,
+            PhoneNumber? driverPhoneNumber,
+            Payment? driverFee,
+            Payment? orePayment,
+            Payment? afterPayment,
+            Payment? insurance,
+            Payment? storage,
+            Payment? oacking,
+            Payment? interCity)
         {
+            SenderCode = senderCode;
+            SenderFirstName = senderFirstName;
+            SenderLastName = senderLastName;
+            SenderPhoneNumber = senderPhoneNumber;
+            ReceiverFirstName= receiverFirstName;
+            ReceiverLastName = receiverLastName;
+            ReceiverPhoneNumber = receiverPhoneNumber;
+            OriginCity= originCity;
+            OriginWarehouse = originWarehouse;
 
         }
 

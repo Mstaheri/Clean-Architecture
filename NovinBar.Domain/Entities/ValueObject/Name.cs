@@ -7,10 +7,10 @@ using NovinBar.Domain.helper;
 
 namespace NovinBar.Domain.Entities.ValueObject
 {
-    public class FirstName
+    public class Name
     {
         public string Value { get; private set; }
-        public FirstName(string value)
+        public Name(string value)
         {
             var result = CheckSenderFirstName(value);
             if (result.Success == true)
@@ -29,7 +29,7 @@ namespace NovinBar.Domain.Entities.ValueObject
                 return new OperationResult
                 {
                     Success = false,
-                    Message = ConstMessages.IsNullFirstName
+                    Message = ConstMessages.IsNullName
                 };
             }
             else
@@ -42,10 +42,10 @@ namespace NovinBar.Domain.Entities.ValueObject
             
         }
 
-        public static implicit operator FirstName(string value)
-        => new FirstName(value);
+        public static implicit operator Name(string value)
+        => new Name(value);
 
-        public static implicit operator string(FirstName senderFirstName)
+        public static implicit operator string(Name senderFirstName)
             => senderFirstName.Value;
     }
 }

@@ -1,7 +1,13 @@
+
+using NovinBar.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSqlServer<DbContextEF>
+    ("Initial Catalog=NovinBar2;Data Source=.;Integrated Security=true;Encrypt=false");
 
 var app = builder.Build();
 

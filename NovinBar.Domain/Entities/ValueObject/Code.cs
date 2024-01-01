@@ -7,24 +7,32 @@ using NovinBar.Domain.helper;
 
 namespace NovinBar.Domain.Entities.ValueObject
 {
-    public class SenderCode
+    public class Code
     {
-        public int Value { get; private set; }
-        public SenderCode(string value)
+        public int? Value { get; private set; }
+        public Code(string value)
         {
-            var result = CheckSenderCode(value);
-            if (result.Success == true)
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                Value = int.Parse(value);
+                var result = CheckSenderCode(value);
+                if (result.Success == true)
+                {
+                    Value = int.Parse(value);
+                }
+                else
+                {
+                    throw new Exception(result.Message);
+                }
             }
             else
             {
-                throw new Exception(result.Message);
+                Value = null;
             }
+            
         }
         private OperationResult CheckSenderCode(string value)
         {
-            if (Validation.CheckNumberFormat(value))
+            if (!Validation.CheckNumberFormat(value))
             {
                 return new OperationResult
                 {
@@ -42,10 +50,10 @@ namespace NovinBar.Domain.Entities.ValueObject
             
         }
 
-        public static implicit operator SenderCode(string value)
-            =>  new SenderCode(value);
+        public static implicit operator Code(string value)
+            =>  new Code(value);
 
-        public static implicit operator int(SenderCode senderCode)
+        public static implicit operator int?(Code senderCode)
             => senderCode.Value;
         
     }

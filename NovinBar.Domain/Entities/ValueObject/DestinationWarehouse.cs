@@ -14,15 +14,15 @@ namespace NovinBar.Domain.Entities.ValueObject
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                var result = CheckOriginWarehouse(value);
-                if (result.Success == true)
-                {
-                    Value = value;
-                }
-                else
-                {
-                    throw new Exception(result.Message);
-                }
+                //var result = CheckOriginWarehouse(value);
+                //if (result.Success == true)
+                //{
+                //    Value = value;
+                //}
+                //else
+                //{
+                //    throw new Exception(result.Message);
+                //}
             }
             else
             {
@@ -30,10 +30,10 @@ namespace NovinBar.Domain.Entities.ValueObject
             }
             
         }
-        private OperationResult CheckOriginWarehouse(string value)
-        {
+        //private OperationResult CheckOriginWarehouse(string value)
+        //{
             
-        }
+        //}
 
         public static implicit operator DestinationWarehouse(string value)
             => new DestinationWarehouse(value);

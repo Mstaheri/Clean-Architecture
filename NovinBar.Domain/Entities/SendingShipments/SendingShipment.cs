@@ -1,6 +1,7 @@
-﻿using NovinBar.Domain.Entities.ValueObject;
-using NovinBar.Domain.SendingCommoditys;
+﻿using NovinBar.Domain.Entities.SendingShipments;
+using NovinBar.Domain.Entities.ValueObject;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,12 +16,11 @@ namespace NovinBar.Domain.SendingShipments
         [Key]
         public int Barname { get; private set; }
         // Sender //
-        public SenderCode? SenderCode { get; private set; }
-        public FirstName SenderFirstName { get; private set; }
+        public Name SenderFirstName { get; private set; }
         public LastName SenderLastName { get; private set; }
         public PhoneNumber SenderPhoneNumber { get; private set; }
         // Receiver //
-        public FirstName ReceiverFirstName { get; private set; }
+        public Name ReceiverFirstName { get; private set; }
         public LastName ReceiverLastName { get; private set; }
         public PhoneNumber ReceiverPhoneNumber { get; private set; }
         // Origin //
@@ -35,8 +35,7 @@ namespace NovinBar.Domain.SendingShipments
         public string Date { get; private set; }
         public string Time { get; private set; }
         // Driver //
-        public int? DriverCode { get; private set; }
-        public FirstName? DriverFirstName { get; private set; }
+        public Name? DriverFirstName { get; private set; }
         public LastName? DriverLastName { get; private set; }
         public PhoneNumber? DriverPhoneNumber { get; private set; }
         public Payment? DriverFee { get; private set; }
@@ -47,14 +46,14 @@ namespace NovinBar.Domain.SendingShipments
         public Payment? Storage { get; private set; }
         public Payment? Packing { get; private set; }
         public Payment? InterCity { get; private set; }
-        public List<SendingCommoditie> SendingCommoditie { get; private set; }
+        public ICollection<SendingCommoditie> SendingCommodities { get; private set; }
+
 
         public SendingShipment(
-            SenderCode? senderCode,
-            FirstName senderFirstName,
+            Name senderFirstName,
             LastName senderLastName,
             PhoneNumber senderPhoneNumber,
-            FirstName receiverFirstName,
+            Name receiverFirstName,
             LastName receiverLastName,
             PhoneNumber receiverPhoneNumber,
             OriginCity originCity,
@@ -65,19 +64,17 @@ namespace NovinBar.Domain.SendingShipments
             DestinationWarehouse destinationWarehouse2,
             string date,
             string time,
-            int? driverCode,
-            FirstName? driverFirstName,
+            Name? driverFirstName,
             LastName? driverLastName,
             PhoneNumber? driverPhoneNumber,
             Payment? driverFee,
-            Payment? orePayment,
+            Payment? prePayment,
             Payment? afterPayment,
             Payment? insurance,
             Payment? storage,
-            Payment? oacking,
+            Payment? packing,
             Payment? interCity)
         {
-            SenderCode = senderCode;
             SenderFirstName = senderFirstName;
             SenderLastName = senderLastName;
             SenderPhoneNumber = senderPhoneNumber;
@@ -86,7 +83,90 @@ namespace NovinBar.Domain.SendingShipments
             ReceiverPhoneNumber = receiverPhoneNumber;
             OriginCity= originCity;
             OriginWarehouse = originWarehouse;
+            DestinationCity1= destinationCity1;
+            DestinationCity2= destinationCity2;
+            DestinationWarehouse1= destinationWarehouse1;
+            DestinationWarehouse2= destinationWarehouse2;
+            Date= date;
+            Time= time;
+            DriverFirstName= driverFirstName;
+            DriverLastName= driverLastName;
+            DriverPhoneNumber= driverPhoneNumber;
+            DriverFee= driverFee;
+            if (prePayment == null && afterPayment != null ||
+                prePayment != null && afterPayment == null)
+            {
+                PrePayment = prePayment;
+                AfterPayment = afterPayment;
+            }
+            else
+            {
+                throw new Exception("");
+            }
+            Insurance= insurance;
+            Storage= storage;
+            Packing= packing;
+            InterCity= interCity;
 
+        }
+        public void UpdateSendingShipment(
+            Name senderFirstName,
+            LastName senderLastName,
+            PhoneNumber senderPhoneNumber,
+            Name receiverFirstName,
+            LastName receiverLastName,
+            PhoneNumber receiverPhoneNumber,
+            OriginCity originCity,
+            OriginWarehouse originWarehouse,
+            DestinationCity destinationCity1,
+            DestinationWarehouse destinationWarehouse1,
+            DestinationCity destinationCity2,
+            DestinationWarehouse destinationWarehouse2,
+            string date,
+            string time,
+            Name? driverFirstName,
+            LastName? driverLastName,
+            PhoneNumber? driverPhoneNumber,
+            Payment? driverFee,
+            Payment? prePayment,
+            Payment? afterPayment,
+            Payment? insurance,
+            Payment? storage,
+            Payment? packing,
+            Payment? interCity)
+        {
+            SenderFirstName = senderFirstName;
+            SenderLastName = senderLastName;
+            SenderPhoneNumber = senderPhoneNumber;
+            ReceiverFirstName = receiverFirstName;
+            ReceiverLastName = receiverLastName;
+            ReceiverPhoneNumber = receiverPhoneNumber;
+            OriginCity = originCity;
+            OriginWarehouse = originWarehouse;
+            DestinationCity1 = destinationCity1;
+            DestinationCity2 = destinationCity2;
+            DestinationWarehouse1 = destinationWarehouse1;
+            DestinationWarehouse2 = destinationWarehouse2;
+            Date = date;
+            Time = time;
+            DriverFirstName = driverFirstName;
+            DriverLastName = driverLastName;
+            DriverPhoneNumber = driverPhoneNumber;
+            DriverFee = driverFee;
+            if (prePayment == null && afterPayment != null ||
+                prePayment != null && afterPayment == null)
+            {
+                PrePayment = prePayment;
+                AfterPayment = afterPayment;
+            }
+            else
+            {
+                throw new Exception("");
+            }
+            Insurance = insurance;
+            Storage = storage;
+            Packing = packing;
+            InterCity = interCity;
         }
 
 

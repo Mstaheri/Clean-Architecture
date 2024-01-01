@@ -17,7 +17,7 @@ namespace NovinBar.Domain.Entities.Users
                 return new OperationResult
                 {
                     Success = false,
-                    Message = ConstMessages.IsNullFirstName
+                    Message = ConstMessages.IsNullName
                 };
             }
             else

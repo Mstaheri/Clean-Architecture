@@ -14,15 +14,15 @@ namespace NovinBar.Domain.Entities.ValueObject
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                var result = CheckDestinationCity(value);
-                if (result.Success == true)
-                {
-                    Value = value;
-                }
-                else
-                {
-                    throw new Exception(result.Message);
-                }
+                //var result = CheckDestinationCity(value);
+                //if (result.Success == true)
+                //{
+                //    Value = value;
+                //}
+                //else
+                //{
+                //    throw new Exception(result.Message);
+                //}
             }
             else
             {
@@ -30,10 +30,10 @@ namespace NovinBar.Domain.Entities.ValueObject
             }
             
         }
-        private OperationResult CheckDestinationCity(string value)
-        {
+        //private OperationResult CheckDestinationCity(string value)
+        //{
             
-        }
+        //}
 
         public static implicit operator DestinationCity(string value)
             => new DestinationCity(value);

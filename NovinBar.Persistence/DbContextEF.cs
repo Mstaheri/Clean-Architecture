@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client.Extensions.Msal;
+using NovinBar.Domain.Entities.SendingShipments;
 using NovinBar.Domain.Entities.Users;
 using NovinBar.Domain.Entities.ValueObject;
-using NovinBar.Domain.SendingCommoditys;
 using NovinBar.Domain.SendingShipments;
 using NovinBar.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,9 +28,6 @@ namespace NovinBar.Persistence
             modelBuilder.Entity<SendingShipment>(option =>
             {
                 option.HasKey(per => per.Barname);
-
-                option.Property(per => per.SenderCode)
-                .HasMaxLength(10);
 
                 option.Property(per => per.SenderFirstName)
                 .HasMaxLength(50)
@@ -87,29 +85,19 @@ namespace NovinBar.Persistence
                .HasMaxLength(5)
                .IsUnicode(true);
 
-                option.Property(per => per.DriverCode)
-               .HasMaxLength(10);
+                option
+                .HasMany(p => p.SendingCommodities)
+                .WithOne()
+                .HasForeignKey("Barname")
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired(true);
 
-                option.Property(per => per.DriverFirstName)
-               .HasMaxLength(50)
-               .IsUnicode(true);
-
-                option.Property(per => per.DriverLastName)
-               .HasMaxLength(50)
-               .IsUnicode(true);
-
-                option.Property(per => per.DriverPhoneNumber)
-               .HasMaxLength(50)
-               .IsUnicode(true);
-
-           
-
-
-
-
-
-                
             });
+            modelBuilder.Entity<User>(Option =>
+            {
+                Option.HasKey(p => p.UserName);
+            });
+            
             base.OnModelCreating(modelBuilder);
         }
     }

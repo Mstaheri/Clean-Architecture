@@ -23,7 +23,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                await db.User.AddAsync(user);
+                await db.Users.AddAsync(user);
                 await db.SaveChangesAsync();
                 return new OperationResult
                 {
@@ -45,7 +45,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User
+                var query = db.Users
                     .Where(p => p.UserName.Contains(SearchUserName))
                     .OrderBy(p => p.LastName)
                     .ThenBy(p => p.FirstName)
@@ -71,7 +71,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User
+                var query = db.Users
                     .Where(p => p.UserName == user.UserName)
                     .Single();
                 query.UpdateUser(user.FirstName, user.LastName, user.PassWord, user.PhoneNumber);
@@ -91,7 +91,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User
+                var query = db.Users
                     .Where(p => p.UserName == userName)
                     .Single();
                 query.Delete();
@@ -111,7 +111,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User
+                var query = db.Users
                     .Where(p => p.UserName == userName)
                     .Single();
                 query.Recovery();
@@ -131,7 +131,7 @@ namespace NovinBar.Infrastructure.EntityFramwork
             try
             {
                 DbContextEF db = new DbContextEF(_ConnectionString);
-                var query = db.User
+                var query = db.Users
                     .Where(p => p.UserName == UserName)
                     .SingleOrDefault();
                 return new OperationResult<User>

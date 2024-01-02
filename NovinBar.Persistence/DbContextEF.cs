@@ -23,7 +23,6 @@ namespace NovinBar.Persistence
         }
         public DbSet<User> Users { get; set; }
         public DbSet<SendingShipment> SendingShipments { get; set; }
-        public DbSet<SendingCommoditie> SendingCommodities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

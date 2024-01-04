@@ -80,6 +80,9 @@ namespace NovinBar.Persistence.Config
             .HasForeignKey(p => p.Barname)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired(true);
+
+            
+            
         }
     }
 }

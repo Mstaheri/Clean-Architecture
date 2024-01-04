@@ -3,11 +3,16 @@ using NovinBar.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+string Connection = builder.Configuration.GetValue<string>("ConnectionString:sqlServer");
 builder.Services.AddSqlServer<DbContextEF>
-    ("Initial Catalog=NovinBar2;Data Source=.;Integrated Security=true;Encrypt=false");
+    (Connection);
+
 
 var app = builder.Build();
 
